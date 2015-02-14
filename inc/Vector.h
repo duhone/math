@@ -945,9 +945,8 @@ inline std::basic_ostream<CharT, Traits>& operator<<(std::basic_ostream<CharT, T
 namespace std
 {
 	template <typename T>
-	class hash<CR::Math::Vector2<T>>
+	struct hash<CR::Math::Vector2<T>>
 	{
-	public:
 		size_t operator()(const CR::Math::Vector2<T>& a_vec) const
 		{
 			return hash<T>()(a_vec.X) ^ hash<T>()(a_vec.Y);
@@ -955,9 +954,8 @@ namespace std
 	};
 
 	template <typename T>
-	class hash<CR::Math::Vector3<T>>
+	struct hash<CR::Math::Vector3<T>>
 	{
-	public:
 		size_t operator()(const CR::Math::Vector3<T>& a_vec) const
 		{
 			return hash<T>()(a_vec.X) ^ hash<T>()(a_vec.Y) ^ hash<T>()(a_vec.Z);
@@ -965,9 +963,8 @@ namespace std
 	};
 
 	template <typename T>
-	class hash<CR::Math::Vector4<T>>
+	struct hash<CR::Math::Vector4<T>>
 	{
-	public:
 		size_t operator()(const CR::Math::Vector4<T>& a_vec) const
 		{
 			return hash<T>()(a_vec.X) ^ hash<T>()(a_vec.Y) ^ hash<T>()(a_vec.Z);
