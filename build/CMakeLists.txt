@@ -9,7 +9,8 @@ project (math)
 
 add_subdirectory("${PROJECT_SOURCE_DIR}/../../Core/build" "${PROJECT_SOURCE_DIR}/../../Core_build")
 
-include_directories("${PROJECT_SOURCE_DIR}/../inc")
+include_directories("${PROJECT_SOURCE_DIR}/../inc/math")
+include_directories("${PROJECT_SOURCE_DIR}/../../Core/inc")
 
 ###############################################
 #library

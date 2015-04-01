@@ -1,12 +1,11 @@
 #pragma once
 #include <limits>
-#include<algorithm>
+#include <algorithm>
 
 namespace CR
 {
 	namespace Math
-	{
-		
+	{		
 		template<class T>
 		class ColorRGB;
 		

@@ -1,6 +1,8 @@
 #pragma once
 #include <cmath>
 #include <string>
+#include <core/Concepts.h>
+#include <core/DefaultOperators.h>
 
 namespace CR
 {
@@ -8,8 +10,8 @@ namespace CR
 	{
 #pragma region Vector2
 
-		template<class T>
-		class Vector2
+		template<Arithmetic T>
+		class Vector2 : public CR::Core::DefaultOperatorsArithmetic<Vector2<T>>
 		{
 		public:
 			T X{0};
@@ -106,103 +108,7 @@ namespace CR
 			Y /= a_arg;
 			return *this;
 		}
-
-		template<class T>
-		Vector2<T> operator+(const Vector2<T>& a_vec1, const Vector2<T>& a_vec2)
-		{
-			auto result = a_vec1;
-			result += a_vec2;
-			return result;
-		}
-
-		template<class T>
-		Vector2<T> operator+(const Vector2<T>& a_vec1, T a_arg)
-		{
-			auto result = a_vec1;
-			result += a_arg;
-			return result;
-		}
-
-		template<class T>
-		Vector2<T> operator+(const T a_arg, const Vector2<T> &a_vec1)
-		{
-			auto result = Vector2<T>{a_arg};
-			result += a_vec1;
-			return result;
-		}
-
-		template<class T>
-		Vector2<T> operator-(const Vector2<T>& a_vec1, const Vector2<T>& a_vec2)
-		{
-			auto result = a_vec1;
-			result -= a_vec2;
-			return result;
-		}
-
-		template<class T>
-		Vector2<T> operator-(const Vector2<T>& a_vec1, T a_arg)
-		{
-			auto result = a_vec1;
-			result -= a_arg;
-			return result;
-		}
-
-		template<class T>
-		Vector2<T> operator-(const T a_arg, const Vector2<T> &a_vec1)
-		{
-			auto result = Vector2<T>{a_arg};
-			result -= a_vec1;
-			return result;
-		}
-
-		template<class T>
-		Vector2<T> operator*(const Vector2<T>& a_vec1, const Vector2<T>& a_vec2)
-		{
-			auto result = a_vec1;
-			result *= a_vec2;
-			return result;
-		}
-
-		template<class T>
-		Vector2<T> operator*(const Vector2<T>& a_vec1, const T a_arg)
-		{
-			auto result = a_vec1;
-			result *= a_arg;
-			return result;
-		}
-
-		template<class T>
-		Vector2<T> operator*(const T a_arg, const Vector2<T> &a_vec1)
-		{
-			auto result = Vector2<T>{a_arg};
-			result *= a_vec1;
-			return result;
-		}
-
-		template<class T>
-		Vector2<T> operator/(const Vector2<T>& a_vec1, const Vector2<T>& a_vec2)
-		{
-			auto result = a_vec1;
-			result /= a_vec2;
-			return result;
-		}
-
-		template<class T>
-		Vector2<T> operator/(const Vector2<T>& a_vec1, const T a_arg)
-		{
-			auto result = a_vec1;
-			result /= a_arg;
-			return result;
-		}
-
-		template<class T>
-		Vector2<T> operator/(const T a_arg, const Vector2<T> &a_vec1)
-		{
-			auto result = Vector2<T>{a_arg};
-			result /= a_vec1;
-			return result;
-		}
-
+		
 		template<class T>
 		T Dot(const Vector2<T>& a_vec1, const Vector2<T>& a_vec2)
 		{
@@ -240,15 +146,19 @@ namespace CR
 		}
 
 		template<class T>
-		bool operator==(const Vector2<T> a_vec1, const Vector2<T> &a_vec2)
+		bool operator==(const Vector2<T>& a_vec1, const Vector2<T>& a_vec2)
 		{
 			return a_vec1.X == a_vec2.X && a_vec1.Y == a_vec2.Y;
 		}
 
 		template<class T>
-		bool operator!=(const Vector2<T> a_vec1, const Vector2<T> &a_vec2)
+		bool operator<(const Vector2<T>& a_vec1, const Vector2<T>& a_vec2)
 		{
-			return !(a_vec1 == a_vec2);
+			if(a_vec1.X < a_vec2.X)
+				return true;
+			if(a_vec2.X < a_vec1.X)
+				return false;
+			return a_vec1.Y < a_vec2.Y;
 		}
 
 		template<class T>
@@ -290,7 +200,7 @@ namespace CR
 #pragma region Vector3
 
 		template<class T>
-		class Vector3
+		class Vector3 : public CR::Core::DefaultOperatorsArithmetic<Vector3<T>>
 		{
 		public:
 			union
@@ -411,102 +321,6 @@ namespace CR
 		}
 
 		template<class T>
-		Vector3<T> operator+(const Vector3<T>& a_vec1, const Vector3<T>& a_vec2)
-		{
-			auto result = a_vec1;
-			result += a_vec2;
-			return result;
-		}
-
-		template<class T>
-		Vector3<T> operator+(const Vector3<T>& a_vec1, T a_arg)
-		{
-			auto result = a_vec1;
-			result += a_arg;
-			return result;
-		}
-
-		template<class T>
-		Vector3<T> operator+(const T a_arg, const Vector3<T> &a_vec1)
-		{
-			auto result = Vector3<T>{a_arg};
-			result += a_vec1;
-			return result;
-		}
-
-		template<class T>
-		Vector3<T> operator-(const Vector3<T>& a_vec1, const Vector3<T>& a_vec2)
-		{
-			auto result = a_vec1;
-			result -= a_vec2;
-			return result;
-		}
-
-		template<class T>
-		Vector3<T> operator-(const Vector3<T>& a_vec1, T a_arg)
-		{
-			auto result = a_vec1;
-			result -= a_arg;
-			return result;
-		}
-
-		template<class T>
-		Vector3<T> operator-(const T a_arg, const Vector3<T> &a_vec1)
-		{
-			auto result = Vector3<T>{a_arg};
-			result -= a_vec1;
-			return result;
-		}
-
-		template<class T>
-		Vector3<T> operator*(const Vector3<T>& a_vec1, const Vector3<T>& a_vec2)
-		{
-			auto result = a_vec1;
-			result *= a_vec2;
-			return result;
-		}
-
-		template<class T>
-		Vector3<T> operator*(const Vector3<T>& a_vec1, const T a_arg)
-		{
-			auto result = a_vec1;
-			result *= a_arg;
-			return result;
-		}
-
-		template<class T>
-		Vector3<T> operator*(const T a_arg, const Vector3<T> &a_vec1)
-		{
-			auto result = Vector3<T>{a_arg};
-			result *= a_vec1;
-			return result;
-		}
-
-		template<class T>
-		Vector3<T> operator/(const Vector3<T>& a_vec1, const Vector3<T>& a_vec2)
-		{
-			auto result = a_vec1;
-			result /= a_vec2;
-			return result;
-		}
-
-		template<class T>
-		Vector3<T> operator/(const Vector3<T>& a_vec1, const T a_arg)
-		{
-			auto result = a_vec1;
-			result /= a_arg;
-			return result;
-		}
-
-		template<class T>
-		Vector3<T> operator/(const T a_arg, const Vector3<T> &a_vec1)
-		{
-			auto result = Vector3<T>{a_arg};
-			result /= a_vec1;
-			return result;
-		}
-
-		template<class T>
 		T Dot(const Vector3<T>& a_vec1, const Vector3<T>& a_vec2)
 		{
 			return a_vec1.X*a_vec2.X + a_vec1.Y*a_vec2.Y + a_vec1.Z*a_vec2.Z;
@@ -597,7 +411,7 @@ namespace CR
 #pragma region Vector4
 
 		template<class T>
-		class Vector4
+		class Vector4 : public CR::Core::DefaultOperatorsArithmetic<Vector4<T>>
 		{
 		public:
 			union
@@ -729,102 +543,6 @@ namespace CR
 			Z /= a_arg;
 			W /= a_arg;
 			return *this;
-		}
-
-		template<class T>
-		Vector4<T> operator+(const Vector4<T>& a_vec1, const Vector4<T>& a_vec2)
-		{
-			auto result = a_vec1;
-			result += a_vec2;
-			return result;
-		}
-
-		template<class T>
-		Vector4<T> operator+(const Vector4<T>& a_vec1, T a_arg)
-		{
-			auto result = a_vec1;
-			result += a_arg;
-			return result;
-		}
-
-		template<class T>
-		Vector4<T> operator+(const T a_arg, const Vector4<T> &a_vec1)
-		{
-			auto result = Vector4<T>{a_arg};
-			result += a_vec1;
-			return result;
-		}
-
-		template<class T>
-		Vector4<T> operator-(const Vector4<T>& a_vec1, const Vector4<T>& a_vec2)
-		{
-			auto result = a_vec1;
-			result -= a_vec2;
-			return result;
-		}
-
-		template<class T>
-		Vector4<T> operator-(const Vector4<T>& a_vec1, T a_arg)
-		{
-			auto result = a_vec1;
-			result -= a_arg;
-			return result;
-		}
-
-		template<class T>
-		Vector4<T> operator-(const T a_arg, const Vector4<T> &a_vec1)
-		{
-			auto result = Vector4<T>{a_arg};
-			result -= a_vec1;
-			return result;
-		}
-
-		template<class T>
-		Vector4<T> operator*(const Vector4<T>& a_vec1, const Vector4<T>& a_vec2)
-		{
-			auto result = a_vec1;
-			result *= a_vec2;
-			return result;
-		}
-
-		template<class T>
-		Vector4<T> operator*(const Vector4<T>& a_vec1, const T a_arg)
-		{
-			auto result = a_vec1;
-			result *= a_arg;
-			return result;
-		}
-
-		template<class T>
-		Vector4<T> operator*(const T a_arg, const Vector4<T> &a_vec1)
-		{
-			auto result = Vector4<T>{a_arg};
-			result *= a_vec1;
-			return result;
-		}
-
-		template<class T>
-		Vector4<T> operator/(const Vector4<T>& a_vec1, const Vector4<T>& a_vec2)
-		{
-			auto result = a_vec1;
-			result /= a_vec2;
-			return result;
-		}
-
-		template<class T>
-		Vector4<T> operator/(const Vector4<T>& a_vec1, const T a_arg)
-		{
-			auto result = a_vec1;
-			result /= a_arg;
-			return result;
-		}
-
-		template<class T>
-		Vector4<T> operator/(const T a_arg, const Vector4<T> &a_vec1)
-		{
-			auto result = Vector4<T>{a_arg};
-			result /= a_vec1;
-			return result;
 		}
 
 		template<class T>

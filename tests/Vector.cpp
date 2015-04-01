@@ -1,6 +1,6 @@
 #include <unordered_set>
-#include "Types.h"
 #include "catch.hpp"
+#include "Types.h"
 
 using namespace CR::Math;
 using namespace std;
@@ -12,7 +12,7 @@ TEST_CASE("basics", "[vector]")
 
 	point += {2, 3};
 	REQUIRE(point.X == 7);
-	point = point * 2;
+	point = point * int2(2);
 	REQUIRE(point.Y == 10);
 	REQUIRE(Dot(float2{2.0f, 3.0f}, float2{4.0f, 2.0f}) == 14);
 
