@@ -7,9 +7,11 @@ option(IncludeTests "Include Unit Tests" ON)
 
 project (math)
 
-add_subdirectory("${PROJECT_SOURCE_DIR}/../../Core/build" "${PROJECT_SOURCE_DIR}/../../Core_build")
+include_directories("${PROJECT_SOURCE_DIR}/../../3rdParty/catch")
 
+add_subdirectory("${PROJECT_SOURCE_DIR}/../../Core/build" "${PROJECT_SOURCE_DIR}/../../Core_build")
 include_directories("${PROJECT_SOURCE_DIR}/../inc/math")
+
 include_directories("${PROJECT_SOURCE_DIR}/../../Core/inc")
 
 ###############################################
@@ -39,5 +41,6 @@ if(IncludeTests)
 						$<TARGET_OBJECTS:math>
 						${math_test_src})
 						
+	set_property(TARGET math_tests APPEND PROPERTY FOLDER tests)
 	set_property(TARGET math_tests APPEND PROPERTY COMPILE_FLAGS "-WX -W4")
 endif()
