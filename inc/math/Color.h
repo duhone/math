@@ -10,40 +10,30 @@ namespace CR
 		class ColorRGB;
 		
 		template<class T>
-		class Color
+		class ColorRGBA
 		{
 		public:
-			Color(T _red, T _green, T _blue, T _alpha = 0)
-			{
-				red = _red;
-				green = _green;
-				blue = _blue;
-				alpha = _alpha;
-			}
-			Color() : red(0), green(0), blue(0), alpha(0) {}
+			T Red{ 0 };
+			T Green{ 0 };
+			T Blue{ 0 };
+			T Alpha{ 0 };
 
-			T Red() const {return red;}
-			void Red(T _red) {red = _red;}
-			T Green() const {return green;}
-			void Green(T _green) {green = _green;}
-			T Blue() const {return blue;}
-			void Blue(T _blue) {blue = _blue;}
-			T Alpha() const {return alpha;}
-			void Alpha(T _alpha) {alpha = _alpha;}			
-			void Set(T _red, T _green, T _blue, T _alpha)
+			ColorRGBA(T _red, T _green, T _blue, T _alpha = 0)
 			{
-				red = _red;
-				green = _green;
-				blue = _blue;
-				alpha = _alpha;
+				Red = _red;
+				Green = _green;
+				Blue = _blue;
+				Alpha = _alpha;
 			}
+			ColorRGBA() = default;
+	
 			template<class S>
 			void operator *= (const Color<S> &_arg)
 			{
-				red = Clamp(red*_arg.red);
-				green = Clamp(green*_arg.green);
-				blue = Clamp(blue*_arg.blue);
-				alpha = Clamp(alpha*_arg.alpha);
+				Red = Clamp(Red*_arg.Red);
+				Green = Clamp(Green*_arg.Green);
+				Blue = Clamp(Blue*_arg.Blue);
+				Alpha = Clamp(Alpha*_arg.Alpha);
 			}
 			template<class S>
 			void operator *= (const ColorRGB<S> &_arg)
@@ -53,10 +43,6 @@ namespace CR
 				blue = Clamp(blue*_arg.Blue());
 			}
 		private:
-			T red;
-			T green;
-			T blue;
-			T alpha;
 			
 			template<class S>
 			T Clamp(S _arg)

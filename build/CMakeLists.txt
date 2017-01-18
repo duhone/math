@@ -1,46 +1,15 @@
 cmake_minimum_required (VERSION 2.6)
 
+project (math)
+
+set_property(GLOBAL PROPERTY USE_FOLDERS ON)
+SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /MP /WX /W4 /std:c++latest /fp:fast /fp:except-")
+SET(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} /arch:AVX /Oi /Ot /sdl-")
+
 ###############################################
 #options
 ###############################################
 option(IncludeTests "Include Unit Tests" ON)
 
-project (math)
-
-include_directories("${PROJECT_SOURCE_DIR}/../../3rdParty/catch")
-
-add_subdirectory("${PROJECT_SOURCE_DIR}/../../Core/build" "${PROJECT_SOURCE_DIR}/../../Core_build")
-include_directories("${PROJECT_SOURCE_DIR}/../inc/math")
-
-include_directories("${PROJECT_SOURCE_DIR}/../../Core/inc")
-
-###############################################
-#library
-###############################################
-file(GLOB_RECURSE math_inc "${PROJECT_SOURCE_DIR}/../inc/*.h")
-file(GLOB_RECURSE math_src1 "${PROJECT_SOURCE_DIR}/../src/*.h")
-file(GLOB_RECURSE math_src2 "${PROJECT_SOURCE_DIR}/../src/*.cpp")
-list(APPEND math_src ${math_inc})
-list(APPEND math_src ${math_src1})
-list(APPEND math_src ${math_src2})
-
-add_library(math OBJECT ${math_src})
-						
-set_property(TARGET math APPEND PROPERTY COMPILE_FLAGS "-WX -W4")
-				
-if(IncludeTests)
-	###############################################
-	#unit tests
-	###############################################
-	file(GLOB_RECURSE math_test_inc "${PROJECT_SOURCE_DIR}/../tests/*.h")
-	file(GLOB_RECURSE math_test_src1 "${PROJECT_SOURCE_DIR}/../tests/*.cpp")
-	list(APPEND math_test_src ${math_test_inc})
-	list(APPEND math_test_src ${math_test_src1})
-	
-	add_executable(math_tests $<TARGET_OBJECTS:core>
-						$<TARGET_OBJECTS:math>
-						${math_test_src})
-						
-	set_property(TARGET math_tests APPEND PROPERTY FOLDER tests)
-	set_property(TARGET math_tests APPEND PROPERTY COMPILE_FLAGS "-WX -W4")
-endif()
+include (${CMAKE_CURRENT_SOURCE_DIR}/build.cmake)
+include (${CMAKE_CURRENT_SOURCE_DIR}/../../core/build/build.cmake)
