@@ -1,6 +1,6 @@
 #include <unordered_set>
 #include "catch.hpp"
-#include "Types.h"
+#include "math/Types.h"
 
 using namespace CR::Math;
 using namespace std;

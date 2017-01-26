@@ -11,5 +11,6 @@ SET(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} /arch:AVX /Oi /Ot /sdl-"
 ###############################################
 option(IncludeTests "Include Unit Tests" ON)
 
+include_directories("${PROJECT_SOURCE_DIR}/../../3rdParty/catch")
 include (${CMAKE_CURRENT_SOURCE_DIR}/build.cmake)
 include (${CMAKE_CURRENT_SOURCE_DIR}/../../core/build/build.cmake)

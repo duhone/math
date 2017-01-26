@@ -1,26 +1,11 @@
 #pragma once
-#include "Point.h"
-#include "Vector.h"
+#include "math/Vector.h"
 
-namespace CR
-{
-	namespace Math
-	{		
-		template<class T>
-		class Ray
-		{
-		public:
-
-			Ray(void)
-			{
-			}
-
-			~Ray(void)
-			{
-			}
-		private:
-			Point<T> origin;
-			Vector3<T> direction;
-		};
-	}
+namespace CR::Math {
+	template<class T>
+	class Ray {
+	public:
+		Vector2<T> Origin;
+		Vector3<T> Direction;
+	};
 }
