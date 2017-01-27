@@ -13,126 +13,126 @@ namespace CR::Math {
 		T X{0};
 		T Y{0};
 
-		explicit Vector2(T a_arg) : X(a_arg), Y(a_arg) {}
-		Vector2(T a_x, T a_y) : X(a_x), Y(a_y) {}
-		Vector2<T>& operator=(const Vector2<T>& a_arg);
+		explicit constexpr Vector2(T a_arg) noexcept : X(a_arg), Y(a_arg) {}
+		constexpr Vector2(T a_x, T a_y) noexcept : X(a_x), Y(a_y) {}
+		constexpr Vector2<T>& operator=(const Vector2<T>& a_arg) noexcept;
 
-		Vector2<T>& operator+=(const Vector2<T>& a_arg);
-		Vector2<T>& operator+=(T a_arg);
-		Vector2<T>& operator-=(const Vector2<T>& a_arg);
-		Vector2<T>& operator-=(T a_arg);
-		Vector2<T>& operator*=(const Vector2<T>& a_arg);
-		Vector2<T>& operator*=(T a_arg);
-		Vector2<T>& operator/=(const Vector2<T>& a_arg);
-		Vector2<T>& operator/=(T a_arg);
+		constexpr Vector2<T>& operator+=(const Vector2<T>& a_arg) noexcept;
+		constexpr Vector2<T>& operator+=(T a_arg) noexcept;
+		constexpr Vector2<T>& operator-=(const Vector2<T>& a_arg) noexcept;
+		constexpr Vector2<T>& operator-=(T a_arg) noexcept;
+		constexpr Vector2<T>& operator*=(const Vector2<T>& a_arg) noexcept;
+		constexpr Vector2<T>& operator*=(T a_arg) noexcept;
+		constexpr Vector2<T>& operator/=(const Vector2<T>& a_arg) noexcept;
+		constexpr Vector2<T>& operator/=(T a_arg) noexcept;
 
-		T LengthSquared() const;
-		T Length() const;
+		constexpr T LengthSquared() const noexcept;
+		constexpr T Length() const noexcept;
 
 		operator std::string() const;
 		operator std::wstring() const;
 	};
 
 	template<class T>
-	Vector2<T>& Vector2<T>::operator=(const Vector2<T>& a_arg) {
+	constexpr Vector2<T>& Vector2<T>::operator=(const Vector2<T>& a_arg) noexcept {
 		X = a_arg.X;
 		Y = a_arg.Y;
 		return *this;
 	}
 
 	template<class T>
-	Vector2<T>& Vector2<T>::operator+=(const Vector2<T>& a_arg) {
+	constexpr Vector2<T>& Vector2<T>::operator+=(const Vector2<T>& a_arg) noexcept {
 		X += a_arg.X;
 		Y += a_arg.Y;
 		return *this;
 	}
 
 	template<class T>
-	Vector2<T>& Vector2<T>::operator+=(T a_arg) {
+	constexpr Vector2<T>& Vector2<T>::operator+=(T a_arg) noexcept {
 		X += a_arg;
 		Y += a_arg;
 		return *this;
 	}
 
 	template<class T>
-	Vector2<T>& Vector2<T>::operator-=(const Vector2<T>& a_arg) {
+	constexpr Vector2<T>& Vector2<T>::operator-=(const Vector2<T>& a_arg) noexcept {
 		X -= a_arg.X;
 		Y -= a_arg.Y;
 		return *this;
 	}
 
 	template<class T>
-	Vector2<T>& Vector2<T>::operator-=(T a_arg) {
+	constexpr Vector2<T>& Vector2<T>::operator-=(T a_arg) noexcept {
 		X -= a_arg;
 		Y -= a_arg;
 		return *this;
 	}
 
 	template<class T>
-	Vector2<T>& Vector2<T>::operator*=(const Vector2<T>& a_arg) {
+	constexpr Vector2<T>& Vector2<T>::operator*=(const Vector2<T>& a_arg) noexcept {
 		X *= a_arg.X;
 		Y *= a_arg.Y;
 		return *this;
 	}
 
 	template<class T>
-	Vector2<T>& Vector2<T>::operator*=(T a_arg) {
+	constexpr Vector2<T>& Vector2<T>::operator*=(T a_arg) noexcept {
 		X *= a_arg;
 		Y *= a_arg;
 		return *this;
 	}
 
 	template<class T>
-	Vector2<T>& Vector2<T>::operator/=(const Vector2<T>& a_arg) {
+	constexpr Vector2<T>& Vector2<T>::operator/=(const Vector2<T>& a_arg) noexcept {
 		X /= a_arg.X;
 		Y /= a_arg.Y;
 		return *this;
 	}
 
 	template<class T>
-	Vector2<T>& Vector2<T>::operator/=(T a_arg) {
+	constexpr Vector2<T>& Vector2<T>::operator/=(T a_arg) noexcept {
 		X /= a_arg;
 		Y /= a_arg;
 		return *this;
 	}
 
 	template<class T>
-	T Dot(const Vector2<T>& a_vec1, const Vector2<T>& a_vec2) {
+	constexpr T Dot(const Vector2<T>& a_vec1, const Vector2<T>& a_vec2) noexcept {
 		return a_vec1.X*a_vec2.X + a_vec1.Y*a_vec2.Y;
 	}
 
 	template<class T>
-	T DistanceSquared(const Vector2<T>& a_vec1, const Vector2<T>& a_vec2) {
+	constexpr T DistanceSquared(const Vector2<T>& a_vec1, const Vector2<T>& a_vec2) noexcept {
 		return (a_vec1 - a_vec2).LengthSquared();
 	}
 
 	template<class T>
-	T Distance(const Vector2<T>& a_vec1, const Vector2<T>& a_vec2) {
+	constexpr T Distance(const Vector2<T>& a_vec1, const Vector2<T>& a_vec2) noexcept {
 		return sqrt(DistanceSquared(a_vec1, a_vec2));
 	}
 
 	template<class T>
-	Vector2<T> Pow(const Vector2<T>& a_vec1, const Vector2<T>& a_vec2) {
+	constexpr Vector2<T> Pow(const Vector2<T>& a_vec1, const Vector2<T>& a_vec2) noexcept {
 		return Vector2<T>(pow(a_vec1.X, a_vec2.X), pow(a_vec1.Y, a_vec2.Y));
 	}
 
 	template<class T>
-	Vector2<T> Pow(const Vector2<T>& a_vec1, T a_arg) {
+	constexpr Vector2<T> Pow(const Vector2<T>& a_vec1, T a_arg) noexcept {
 		return Vector2<T>(pow(a_vec1.X, a_arg), pow(a_vec1.Y, a_arg));
 	}
 
 	template<class T>
-	Vector2<T> Pow(T a_arg, const Vector2<T>& a_vec1) {
+	constexpr Vector2<T> Pow(T a_arg, const Vector2<T>& a_vec1) noexcept {
 		return Vector2<T>(pow(a_arg, a_vec1.X), pow(a_arg, a_vec1.Y));
 	}
 
 	template<class T>
-	bool operator==(const Vector2<T>& a_vec1, const Vector2<T>& a_vec2) {
+	constexpr bool operator==(const Vector2<T>& a_vec1, const Vector2<T>& a_vec2) noexcept {
 		return a_vec1.X == a_vec2.X && a_vec1.Y == a_vec2.Y;
 	}
 
 	template<class T>
-	bool operator<(const Vector2<T>& a_vec1, const Vector2<T>& a_vec2) {
+	constexpr bool operator<(const Vector2<T>& a_vec1, const Vector2<T>& a_vec2) noexcept {
 		if(a_vec1.X < a_vec2.X)
 			return true;
 		if(a_vec2.X < a_vec1.X)
@@ -141,12 +141,12 @@ namespace CR::Math {
 	}
 
 	template<class T>
-	T Vector2<T>::LengthSquared() const {
+	constexpr T Vector2<T>::LengthSquared() const noexcept {
 		return Dot(*this, *this);
 	}
 
 	template<class T>
-	T Vector2<T>::Length() const {
+	constexpr T Vector2<T>::Length() const noexcept {
 		return sqrt(LengthSquared());
 	}
 
@@ -190,28 +190,28 @@ namespace CR::Math {
 			T B;
 		};
 
-		explicit Vector3(T a_arg) : X(a_arg), Y(a_arg), Z(a_arg) {}
-		Vector3(T a_x, T a_y, T a_z) : X(a_x), Y(a_y), Z(a_z) {}
-		Vector3<T>& operator=(const Vector3<T>& a_arg);
+		constexpr explicit Vector3(T a_arg) noexcept: X(a_arg), Y(a_arg), Z(a_arg) {}
+		constexpr Vector3(T a_x, T a_y, T a_z) noexcept : X(a_x), Y(a_y), Z(a_z) {}
+		constexpr Vector3<T>& operator=(const Vector3<T>& a_arg) noexcept;
 
-		Vector3<T>& operator+=(const Vector3<T>& a_arg);
-		Vector3<T>& operator+=(T a_arg);
-		Vector3<T>& operator-=(const Vector3<T>& a_arg);
-		Vector3<T>& operator-=(T a_arg);
-		Vector3<T>& operator*=(const Vector3<T>& a_arg);
-		Vector3<T>& operator*=(T a_arg);
-		Vector3<T>& operator/=(const Vector3<T>& a_arg);
-		Vector3<T>& operator/=(T a_arg);
+		constexpr Vector3<T>& operator+=(const Vector3<T>& a_arg) noexcept;
+		constexpr Vector3<T>& operator+=(T a_arg) noexcept;
+		constexpr Vector3<T>& operator-=(const Vector3<T>& a_arg) noexcept;
+		constexpr Vector3<T>& operator-=(T a_arg) noexcept;
+		constexpr Vector3<T>& operator*=(const Vector3<T>& a_arg) noexcept;
+		constexpr Vector3<T>& operator*=(T a_arg) noexcept;
+		constexpr Vector3<T>& operator/=(const Vector3<T>& a_arg) noexcept;
+		constexpr Vector3<T>& operator/=(T a_arg) noexcept;
 
-		T LengthSquared() const;
-		T Length() const;
+		constexpr T LengthSquared() const noexcept;
+		constexpr T Length() const noexcept;
 
 		operator std::string() const;
 		operator std::wstring() const;
 	};
 
 	template<class T>
-	Vector3<T>& Vector3<T>::operator=(const Vector3<T>& a_arg) {
+	constexpr Vector3<T>& Vector3<T>::operator=(const Vector3<T>& a_arg) noexcept {
 		X = a_arg.X;
 		Y = a_arg.Y;
 		Z = a_arg.Z;
@@ -219,7 +219,7 @@ namespace CR::Math {
 	}
 
 	template<class T>
-	Vector3<T>& Vector3<T>::operator+=(const Vector3<T>& a_arg) {
+	constexpr Vector3<T>& Vector3<T>::operator+=(const Vector3<T>& a_arg) noexcept {
 		X += a_arg.X;
 		Y += a_arg.Y;
 		Z += a_arg.Z;
@@ -227,7 +227,7 @@ namespace CR::Math {
 	}
 
 	template<class T>
-	Vector3<T>& Vector3<T>::operator+=(T a_arg) {
+	constexpr Vector3<T>& Vector3<T>::operator+=(T a_arg) noexcept {
 		X += a_arg;
 		Y += a_arg;
 		Z += a_arg;
@@ -235,7 +235,7 @@ namespace CR::Math {
 	}
 
 	template<class T>
-	Vector3<T>& Vector3<T>::operator-=(const Vector3<T>& a_arg) {
+	constexpr Vector3<T>& Vector3<T>::operator-=(const Vector3<T>& a_arg) noexcept {
 		X -= a_arg.X;
 		Y -= a_arg.Y;
 		Z -= a_arg.Z;
@@ -243,7 +243,7 @@ namespace CR::Math {
 	}
 
 	template<class T>
-	Vector3<T>& Vector3<T>::operator-=(T a_arg) {
+	constexpr Vector3<T>& Vector3<T>::operator-=(T a_arg) noexcept {
 		X -= a_arg;
 		Y -= a_arg;
 		Z -= a_arg;
@@ -251,7 +251,7 @@ namespace CR::Math {
 	}
 
 	template<class T>
-	Vector3<T>& Vector3<T>::operator*=(const Vector3<T>& a_arg) {
+	constexpr Vector3<T>& Vector3<T>::operator*=(const Vector3<T>& a_arg) noexcept {
 		X *= a_arg.X;
 		Y *= a_arg.Y;
 		Z *= a_arg.Z;
@@ -259,7 +259,7 @@ namespace CR::Math {
 	}
 
 	template<class T>
-	Vector3<T>& Vector3<T>::operator*=(T a_arg) {
+	constexpr Vector3<T>& Vector3<T>::operator*=(T a_arg) noexcept {
 		X *= a_arg;
 		Y *= a_arg;
 		Z *= a_arg;
@@ -267,7 +267,7 @@ namespace CR::Math {
 	}
 
 	template<class T>
-	Vector3<T>& Vector3<T>::operator/=(const Vector3<T>& a_arg) {
+	constexpr Vector3<T>& Vector3<T>::operator/=(const Vector3<T>& a_arg) noexcept {
 		X /= a_arg.X;
 		Y /= a_arg.Y;
 		Z /= a_arg.Z;
@@ -275,7 +275,7 @@ namespace CR::Math {
 	}
 
 	template<class T>
-	Vector3<T>& Vector3<T>::operator/=(T a_arg) {
+	constexpr Vector3<T>& Vector3<T>::operator/=(T a_arg) noexcept {
 		X /= a_arg;
 		Y /= a_arg;
 		Z /= a_arg;
@@ -283,52 +283,52 @@ namespace CR::Math {
 	}
 
 	template<class T>
-	T Dot(const Vector3<T>& a_vec1, const Vector3<T>& a_vec2) {
+	constexpr T Dot(const Vector3<T>& a_vec1, const Vector3<T>& a_vec2) noexcept {
 		return a_vec1.X*a_vec2.X + a_vec1.Y*a_vec2.Y + a_vec1.Z*a_vec2.Z;
 	}
 
 	template<class T>
-	T DistanceSquared(const Vector3<T>& a_vec1, const Vector3<T>& a_vec2) {
+	constexpr T DistanceSquared(const Vector3<T>& a_vec1, const Vector3<T>& a_vec2) noexcept {
 		return (a_vec1 - a_vec2).LengthSquared();
 	}
 
 	template<class T>
-	T Distance(const Vector3<T>& a_vec1, const Vector3<T>& a_vec2) {
+	constexpr T Distance(const Vector3<T>& a_vec1, const Vector3<T>& a_vec2) noexcept {
 		return sqrt(DistanceSquared(a_vec1, a_vec2));
 	}
 
 	template<class T>
-	Vector3<T> Pow(const Vector3<T>& a_vec1, const Vector3<T>& a_vec2) {
+	constexpr Vector3<T> Pow(const Vector3<T>& a_vec1, const Vector3<T>& a_vec2) noexcept {
 		return Vector2<T>(pow(a_vec1.X, a_vec2.X), pow(a_vec1.Y, a_vec2.Y), pow(a_vec1.Z, a_vec2.Z));
 	}
 
 	template<class T>
-	Vector3<T> Pow(const Vector3<T>& a_vec1, T a_arg) {
+	constexpr Vector3<T> Pow(const Vector3<T>& a_vec1, T a_arg) noexcept {
 		return Vector3<T>(pow(a_vec1.X, a_arg), pow(a_vec1.Y, a_arg), pow(a_vec1.Z, a_arg));
 	}
 
 	template<class T>
-	Vector3<T> Pow(T a_arg, const Vector3<T>& a_vec1) {
+	constexpr Vector3<T> Pow(T a_arg, const Vector3<T>& a_vec1) noexcept {
 		return Vector3<T>(pow(a_arg, a_vec1.X), pow(a_arg, a_vec1.Y), pow(a_arg, a_vec1.Z));
 	}
 
 	template<class T>
-	bool operator==(const Vector3<T> a_vec1, const Vector3<T> &a_vec2) {
+	constexpr bool operator==(const Vector3<T> a_vec1, const Vector3<T> &a_vec2) noexcept {
 		return a_vec1.X == a_vec2.X && a_vec1.Y == a_vec2.Y && a_vec1.Z == a_vec2.Z;
 	}
 
 	template<class T>
-	bool operator!=(const Vector3<T> a_vec1, const Vector3<T> &a_vec2) {
+	constexpr bool operator!=(const Vector3<T> a_vec1, const Vector3<T> &a_vec2) noexcept {
 		return !(a_vec1 == a_vec2);
 	}
 
 	template<class T>
-	T Vector3<T>::LengthSquared() const {
+	constexpr T Vector3<T>::LengthSquared() const noexcept {
 		return Dot(*this, *this);
 	}
 
 	template<class T>
-	T Vector3<T>::Length() const {
+	constexpr T Vector3<T>::Length() const noexcept {
 		return sqrt(LengthSquared());
 	}
 
@@ -380,28 +380,28 @@ namespace CR::Math {
 			T A;
 		};
 
-		explicit Vector4(T a_arg) : X(a_arg), Y(a_arg), Z(a_arg), W(a_arg) {}
-		Vector4(T a_x, T a_y, T a_z, T a_w) : X(a_x), Y(a_y), Z(a_z), W(a_w) {}
-		Vector4<T>& operator=(const Vector4<T>& a_arg);
+		constexpr explicit Vector4(T a_arg) noexcept : X(a_arg), Y(a_arg), Z(a_arg), W(a_arg) {}
+		constexpr Vector4(T a_x, T a_y, T a_z, T a_w) noexcept : X(a_x), Y(a_y), Z(a_z), W(a_w) {}
+		constexpr Vector4<T>& operator=(const Vector4<T>& a_arg) noexcept;
 
-		Vector4<T>& operator+=(const Vector4<T>& a_arg);
-		Vector4<T>& operator+=(T a_arg);
-		Vector4<T>& operator-=(const Vector4<T>& a_arg);
-		Vector4<T>& operator-=(T a_arg);
-		Vector4<T>& operator*=(const Vector4<T>& a_arg);
-		Vector4<T>& operator*=(T a_arg);
-		Vector4<T>& operator/=(const Vector4<T>& a_arg);
-		Vector4<T>& operator/=(T a_arg);
+		constexpr Vector4<T>& operator+=(const Vector4<T>& a_arg) noexcept;
+		constexpr Vector4<T>& operator+=(T a_arg) noexcept;
+		constexpr Vector4<T>& operator-=(const Vector4<T>& a_arg) noexcept;
+		constexpr Vector4<T>& operator-=(T a_arg) noexcept;
+		constexpr Vector4<T>& operator*=(const Vector4<T>& a_arg) noexcept;
+		constexpr Vector4<T>& operator*=(T a_arg) noexcept;
+		constexpr Vector4<T>& operator/=(const Vector4<T>& a_arg) noexcept;
+		constexpr Vector4<T>& operator/=(T a_arg) noexcept;
 
-		T LengthSquared() const;
-		T Length() const;
+		constexpr T LengthSquared() const noexcept;
+		constexpr T Length() const noexcept;
 
 		operator std::string() const;
 		operator std::wstring() const;
 	};
 
 	template<class T>
-	Vector4<T>& Vector4<T>::operator=(const Vector4<T>& a_arg) {
+	constexpr Vector4<T>& Vector4<T>::operator=(const Vector4<T>& a_arg) noexcept {
 		X = a_arg.X;
 		Y = a_arg.Y;
 		Z = a_arg.Z;
@@ -410,7 +410,7 @@ namespace CR::Math {
 	}
 
 	template<class T>
-	Vector4<T>& Vector4<T>::operator+=(const Vector4<T>& a_arg) {
+	constexpr Vector4<T>& Vector4<T>::operator+=(const Vector4<T>& a_arg) noexcept {
 		X += a_arg.X;
 		Y += a_arg.Y;
 		Z += a_arg.Z;
@@ -419,7 +419,7 @@ namespace CR::Math {
 	}
 
 	template<class T>
-	Vector4<T>& Vector4<T>::operator+=(T a_arg) {
+	constexpr Vector4<T>& Vector4<T>::operator+=(T a_arg) noexcept {
 		X += a_arg;
 		Y += a_arg;
 		Z += a_arg;
@@ -428,7 +428,7 @@ namespace CR::Math {
 	}
 
 	template<class T>
-	Vector4<T>& Vector4<T>::operator-=(const Vector4<T>& a_arg) {
+	constexpr Vector4<T>& Vector4<T>::operator-=(const Vector4<T>& a_arg) noexcept {
 		X -= a_arg.X;
 		Y -= a_arg.Y;
 		Z -= a_arg.Z;
@@ -437,7 +437,7 @@ namespace CR::Math {
 	}
 
 	template<class T>
-	Vector4<T>& Vector4<T>::operator-=(T a_arg) {
+	constexpr Vector4<T>& Vector4<T>::operator-=(T a_arg) noexcept {
 		X -= a_arg;
 		Y -= a_arg;
 		Z -= a_arg;
@@ -446,7 +446,7 @@ namespace CR::Math {
 	}
 
 	template<class T>
-	Vector4<T>& Vector4<T>::operator*=(const Vector4<T>& a_arg) {
+	constexpr Vector4<T>& Vector4<T>::operator*=(const Vector4<T>& a_arg) noexcept {
 		X *= a_arg.X;
 		Y *= a_arg.Y;
 		Z *= a_arg.Z;
@@ -455,7 +455,7 @@ namespace CR::Math {
 	}
 
 	template<class T>
-	Vector4<T>& Vector4<T>::operator*=(T a_arg) {
+	constexpr Vector4<T>& Vector4<T>::operator*=(T a_arg) noexcept {
 		X *= a_arg;
 		Y *= a_arg;
 		Z *= a_arg;
@@ -464,7 +464,7 @@ namespace CR::Math {
 	}
 
 	template<class T>
-	Vector4<T>& Vector4<T>::operator/=(const Vector4<T>& a_arg) {
+	constexpr Vector4<T>& Vector4<T>::operator/=(const Vector4<T>& a_arg) noexcept {
 		X /= a_arg.X;
 		Y /= a_arg.Y;
 		Z /= a_arg.Z;
@@ -473,7 +473,7 @@ namespace CR::Math {
 	}
 
 	template<class T>
-	Vector4<T>& Vector4<T>::operator/=(T a_arg) {
+	constexpr Vector4<T>& Vector4<T>::operator/=(T a_arg) noexcept {
 		X /= a_arg;
 		Y /= a_arg;
 		Z /= a_arg;
@@ -482,52 +482,52 @@ namespace CR::Math {
 	}
 
 	template<class T>
-	T Dot(const Vector4<T>& a_vec1, const Vector4<T>& a_vec2) {
+	constexpr T Dot(const Vector4<T>& a_vec1, const Vector4<T>& a_vec2) noexcept {
 		return a_vec1.X*a_vec2.X + a_vec1.Y*a_vec2.Y + a_vec1.Z*a_vec2.Z + a_vec1.W*a_vec2.W;
 	}
 
 	template<class T>
-	T DistanceSquared(const Vector4<T>& a_vec1, const Vector4<T>& a_vec2) {
+	constexpr T DistanceSquared(const Vector4<T>& a_vec1, const Vector4<T>& a_vec2) noexcept {
 		return (a_vec1 - a_vec2).LengthSquared();
 	}
 
 	template<class T>
-	T Distance(const Vector4<T>& a_vec1, const Vector4<T>& a_vec2) {
+	constexpr T Distance(const Vector4<T>& a_vec1, const Vector4<T>& a_vec2) noexcept {
 		return sqrt(DistanceSquared(a_vec1, a_vec2));
 	}
 
 	template<class T>
-	Vector4<T> Pow(const Vector4<T>& a_vec1, const Vector4<T>& a_vec2) {
+	constexpr Vector4<T> Pow(const Vector4<T>& a_vec1, const Vector4<T>& a_vec2) noexcept {
 		return Vector4<T>(pow(a_vec1.X, a_vec2.X), pow(a_vec1.Y, a_vec2.Y), pow(a_vec1.Z, a_vec2.Z), pow(a_vec1.W, a_vec2.W));
 	}
 
 	template<class T>
-	Vector4<T> Pow(const Vector4<T>& a_vec1, T a_arg) {
+	constexpr Vector4<T> Pow(const Vector4<T>& a_vec1, T a_arg) noexcept {
 		return Vector4<T>(pow(a_vec1.X, a_arg), pow(a_vec1.Y, a_arg), pow(a_vec1.Z, a_arg), pow(a_Vec1.W, a_arg));
 	}
 
 	template<class T>
-	Vector4<T> Pow(T a_arg, const Vector4<T>& a_vec1) {
+	constexpr Vector4<T> Pow(T a_arg, const Vector4<T>& a_vec1) noexcept {
 		return Vector4<T>(pow(a_arg, a_vec1.X), pow(a_arg, a_vec1.Y), pow(a_arg, a_vec1.Z), pow(a_arg, a_vec1.W));
 	}
 
 	template<class T>
-	bool operator==(const Vector4<T> a_vec1, const Vector4<T> &a_vec2) {
+	constexpr bool operator==(const Vector4<T> a_vec1, const Vector4<T> &a_vec2) noexcept {
 		return a_vec1.X == a_vec2.X && a_vec1.Y == a_vec2.Y && a_vec1.Z == a_vec2.Z && a_vec1.W == a_vec2.W;
 	}
 
 	template<class T>
-	bool operator!=(const Vector4<T> a_vec1, const Vector4<T> &a_vec2) {
+	constexpr bool operator!=(const Vector4<T> a_vec1, const Vector4<T> &a_vec2) noexcept {
 		return !(a_vec1 == a_vec2);
 	}
 
 	template<class T>
-	T Vector4<T>::LengthSquared() const {
+	constexpr T Vector4<T>::LengthSquared() const noexcept {
 		return Dot(*this, *this);
 	}
 
 	template<class T>
-	T Vector4<T>::Length() const {
+	constexpr T Vector4<T>::Length() const noexcept {
 		return sqrt(LengthSquared());
 	}
 
@@ -583,21 +583,21 @@ inline std::basic_ostream<CharT, Traits>& operator<<(std::basic_ostream<CharT, T
 namespace std {
 	template <typename T>
 	struct hash<CR::Math::Vector2<T>> {
-		size_t operator()(const CR::Math::Vector2<T>& a_vec) const {
+		constexpr size_t operator()(const CR::Math::Vector2<T>& a_vec) const noexcept {
 			return hash<T>()(a_vec.X) ^ hash<T>()(a_vec.Y);
 		}
 	};
 
 	template <typename T>
 	struct hash<CR::Math::Vector3<T>> {
-		size_t operator()(const CR::Math::Vector3<T>& a_vec) const {
+		constexpr size_t operator()(const CR::Math::Vector3<T>& a_vec) const noexcept {
 			return hash<T>()(a_vec.X) ^ hash<T>()(a_vec.Y) ^ hash<T>()(a_vec.Z);
 		}
 	};
 
 	template <typename T>
 	struct hash<CR::Math::Vector4<T>> {
-		size_t operator()(const CR::Math::Vector4<T>& a_vec) const {
+		constexpr size_t operator()(const CR::Math::Vector4<T>& a_vec) const noexcept {
 			return hash<T>()(a_vec.X) ^ hash<T>()(a_vec.Y) ^ hash<T>()(a_vec.Z);
 		}
 	};
