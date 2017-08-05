@@ -3,6 +3,7 @@
 #include <algorithm>
 #include <type_traits>
 #include "core/Concepts.h"
+#include "Types.h"
 
 namespace CR::Math {
 	template<Arithmetic T>
@@ -53,8 +54,8 @@ namespace CR::Math {
 		}
 	};
 
-	using ColorRGBA8 = ColorRGBA<unsigned char>;
+	using ColorRGBA8 = ColorRGBA<uchar>;
 	using ColorRGBA32F = ColorRGBA<float>;
-	using ColorRGB8 = ColorRGB<unsigned char>;
+	using ColorRGB8 = ColorRGB<uchar>;
 	using ColorRGB32F = ColorRGB<float>;
 }

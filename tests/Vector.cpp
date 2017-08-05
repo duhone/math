@@ -7,12 +7,12 @@ using namespace std;
 
 TEST_CASE("basics", "[vector]")
 {
-	int2 point{5, 2};
+	sint2 point{5, 2};
 	REQUIRE(point.X == 5);
 
 	point += {2, 3};
 	REQUIRE(point.X == 7);
-	point = point * int2(2);
+	point = point * sint2(2);
 	REQUIRE(point.Y == 10);
 	REQUIRE(Dot(float2{2.0f, 3.0f}, float2{4.0f, 2.0f}) == 14);
 
@@ -20,7 +20,7 @@ TEST_CASE("basics", "[vector]")
 	stream << point;
 	REQUIRE(stream.str() == string{"{14, 10}"});
 	
-	unordered_set<int2> testSet;
+	unordered_set<sint2> testSet;
 	testSet.insert(point);
 	REQUIRE(testSet.find(point) != testSet.end());
 	

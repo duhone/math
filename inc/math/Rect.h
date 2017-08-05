@@ -1,17 +1,18 @@
 #pragma once
 #include <algorithm>
+#include "Types.h"
 
 namespace CR::Math {
 	template<class T>
-	class Rectangle {
+	class Rect {
 	public:
 		T Top{0};
 		T Left{0};
 		T Width{0};
 		T Height{0};
 
-		Rectangle() = default;
-		Rectangle(T a_top, T a_left, T a_width, T a_height) :
+		Rect() = default;
+		Rect(T a_top, T a_left, T a_width, T a_height) :
 			Top(a_top), Left(a_left), Width(a_width), Height(a_height) {}
 
 		T Bottom() const { return top + height; }
@@ -24,7 +25,7 @@ namespace CR::Math {
 		}
 	};
 
-	typedef Rectangle<double> RectangleD;
-	typedef Rectangle<float> RectangleF;
-	typedef Rectangle<int> RectangleI;
+	typedef Rect<double> RectD;
+	typedef Rect<float> RectF;
+	typedef Rect<sint> RectSI;
 }
