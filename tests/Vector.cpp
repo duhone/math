@@ -1,6 +1,7 @@
-#include <unordered_set>
 #include "catch.hpp"
 #include "math/Types.h"
+#include <unordered_set>
+#include <sstream>
 
 using namespace CR::Math;
 using namespace std;
