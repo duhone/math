@@ -1,15 +1,15 @@
 #pragma once
 #include <cmath>
-#include <string>
 #include <core/Concepts.h>
 #include <core/DefaultOperators.h>
+#include <string>
 
 namespace CR::Math {
 #pragma region Vector2
 
 	template<Arithmetic T>
 	class Vector2 : public CR::Core::DefaultOperatorsArithmetic<Vector2<T>> {
-	public:
+	  public:
 		T X{0};
 		T Y{0};
 
@@ -98,7 +98,7 @@ namespace CR::Math {
 
 	template<class T>
 	constexpr T Dot(const Vector2<T>& a_vec1, const Vector2<T>& a_vec2) noexcept {
-		return a_vec1.X*a_vec2.X + a_vec1.Y*a_vec2.Y;
+		return a_vec1.X * a_vec2.X + a_vec1.Y * a_vec2.Y;
 	}
 
 	template<class T>
@@ -133,10 +133,8 @@ namespace CR::Math {
 
 	template<class T>
 	constexpr bool operator<(const Vector2<T>& a_vec1, const Vector2<T>& a_vec2) noexcept {
-		if(a_vec1.X < a_vec2.X)
-			return true;
-		if(a_vec2.X < a_vec1.X)
-			return false;
+		if(a_vec1.X < a_vec2.X) return true;
+		if(a_vec2.X < a_vec1.X) return false;
 		return a_vec1.Y < a_vec2.Y;
 	}
 
@@ -176,7 +174,7 @@ namespace CR::Math {
 
 	template<class T>
 	class Vector3 : public CR::Core::DefaultOperatorsArithmetic<Vector3<T>> {
-	public:
+	  public:
 		union {
 			T X{0};
 			T R;
@@ -190,7 +188,7 @@ namespace CR::Math {
 			T B;
 		};
 
-		constexpr explicit Vector3(T a_arg) noexcept: X(a_arg), Y(a_arg), Z(a_arg) {}
+		constexpr explicit Vector3(T a_arg) noexcept : X(a_arg), Y(a_arg), Z(a_arg) {}
 		constexpr Vector3(T a_x, T a_y, T a_z) noexcept : X(a_x), Y(a_y), Z(a_z) {}
 		constexpr Vector3<T>& operator=(const Vector3<T>& a_arg) noexcept;
 
@@ -284,7 +282,7 @@ namespace CR::Math {
 
 	template<class T>
 	constexpr T Dot(const Vector3<T>& a_vec1, const Vector3<T>& a_vec2) noexcept {
-		return a_vec1.X*a_vec2.X + a_vec1.Y*a_vec2.Y + a_vec1.Z*a_vec2.Z;
+		return a_vec1.X * a_vec2.X + a_vec1.Y * a_vec2.Y + a_vec1.Z * a_vec2.Z;
 	}
 
 	template<class T>
@@ -313,12 +311,12 @@ namespace CR::Math {
 	}
 
 	template<class T>
-	constexpr bool operator==(const Vector3<T> a_vec1, const Vector3<T> &a_vec2) noexcept {
+	constexpr bool operator==(const Vector3<T> a_vec1, const Vector3<T>& a_vec2) noexcept {
 		return a_vec1.X == a_vec2.X && a_vec1.Y == a_vec2.Y && a_vec1.Z == a_vec2.Z;
 	}
 
 	template<class T>
-	constexpr bool operator!=(const Vector3<T> a_vec1, const Vector3<T> &a_vec2) noexcept {
+	constexpr bool operator!=(const Vector3<T> a_vec1, const Vector3<T>& a_vec2) noexcept {
 		return !(a_vec1 == a_vec2);
 	}
 
@@ -362,7 +360,7 @@ namespace CR::Math {
 
 	template<class T>
 	class Vector4 : public CR::Core::DefaultOperatorsArithmetic<Vector4<T>> {
-	public:
+	  public:
 		union {
 			T X{0};
 			T R;
@@ -483,7 +481,7 @@ namespace CR::Math {
 
 	template<class T>
 	constexpr T Dot(const Vector4<T>& a_vec1, const Vector4<T>& a_vec2) noexcept {
-		return a_vec1.X*a_vec2.X + a_vec1.Y*a_vec2.Y + a_vec1.Z*a_vec2.Z + a_vec1.W*a_vec2.W;
+		return a_vec1.X * a_vec2.X + a_vec1.Y * a_vec2.Y + a_vec1.Z * a_vec2.Z + a_vec1.W * a_vec2.W;
 	}
 
 	template<class T>
@@ -498,7 +496,8 @@ namespace CR::Math {
 
 	template<class T>
 	constexpr Vector4<T> Pow(const Vector4<T>& a_vec1, const Vector4<T>& a_vec2) noexcept {
-		return Vector4<T>(pow(a_vec1.X, a_vec2.X), pow(a_vec1.Y, a_vec2.Y), pow(a_vec1.Z, a_vec2.Z), pow(a_vec1.W, a_vec2.W));
+		return Vector4<T>(pow(a_vec1.X, a_vec2.X), pow(a_vec1.Y, a_vec2.Y), pow(a_vec1.Z, a_vec2.Z),
+		                  pow(a_vec1.W, a_vec2.W));
 	}
 
 	template<class T>
@@ -512,12 +511,12 @@ namespace CR::Math {
 	}
 
 	template<class T>
-	constexpr bool operator==(const Vector4<T> a_vec1, const Vector4<T> &a_vec2) noexcept {
+	constexpr bool operator==(const Vector4<T> a_vec1, const Vector4<T>& a_vec2) noexcept {
 		return a_vec1.X == a_vec2.X && a_vec1.Y == a_vec2.Y && a_vec1.Z == a_vec2.Z && a_vec1.W == a_vec2.W;
 	}
 
 	template<class T>
-	constexpr bool operator!=(const Vector4<T> a_vec1, const Vector4<T> &a_vec2) noexcept {
+	constexpr bool operator!=(const Vector4<T> a_vec1, const Vector4<T>& a_vec2) noexcept {
 		return !(a_vec1 == a_vec2);
 	}
 
@@ -563,42 +562,45 @@ namespace CR::Math {
 }
 
 template<typename CharT, typename Traits, typename T>
-inline std::basic_ostream<CharT, Traits>& operator<<(std::basic_ostream<CharT, Traits>& a_strm, const CR::Math::Vector2<T>& a_vec) {
+inline std::basic_ostream<CharT, Traits>& operator<<(std::basic_ostream<CharT, Traits>& a_strm,
+                                                     const CR::Math::Vector2<T>& a_vec) {
 	a_strm << static_cast<std::basic_string<CharT, Traits>>(a_vec);
 	return a_strm;
 }
 
 template<typename CharT, typename Traits, typename T>
-inline std::basic_ostream<CharT, Traits>& operator<<(std::basic_ostream<CharT, Traits>& a_strm, const CR::Math::Vector3<T>& a_vec) {
+inline std::basic_ostream<CharT, Traits>& operator<<(std::basic_ostream<CharT, Traits>& a_strm,
+                                                     const CR::Math::Vector3<T>& a_vec) {
 	a_strm << static_cast<std::basic_string<CharT, Traits>>(a_vec);
 	return a_strm;
 }
 
 template<typename CharT, typename Traits, typename T>
-inline std::basic_ostream<CharT, Traits>& operator<<(std::basic_ostream<CharT, Traits>& a_strm, const CR::Math::Vector4<T>& a_vec) {
+inline std::basic_ostream<CharT, Traits>& operator<<(std::basic_ostream<CharT, Traits>& a_strm,
+                                                     const CR::Math::Vector4<T>& a_vec) {
 	a_strm << static_cast<std::basic_string<CharT, Traits>>(a_vec);
 	return a_strm;
 }
 
 namespace std {
-	template <typename T>
+	template<typename T>
 	struct hash<CR::Math::Vector2<T>> {
 		constexpr size_t operator()(const CR::Math::Vector2<T>& a_vec) const noexcept {
 			return hash<T>()(a_vec.X) ^ hash<T>()(a_vec.Y);
 		}
 	};
 
-	template <typename T>
+	template<typename T>
 	struct hash<CR::Math::Vector3<T>> {
 		constexpr size_t operator()(const CR::Math::Vector3<T>& a_vec) const noexcept {
 			return hash<T>()(a_vec.X) ^ hash<T>()(a_vec.Y) ^ hash<T>()(a_vec.Z);
 		}
 	};
 
-	template <typename T>
+	template<typename T>
 	struct hash<CR::Math::Vector4<T>> {
 		constexpr size_t operator()(const CR::Math::Vector4<T>& a_vec) const noexcept {
 			return hash<T>()(a_vec.X) ^ hash<T>()(a_vec.Y) ^ hash<T>()(a_vec.Z);
 		}
 	};
-}
+}    // namespace std

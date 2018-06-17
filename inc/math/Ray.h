@@ -4,8 +4,8 @@
 namespace CR::Math {
 	template<class T>
 	class Ray {
-	public:
+	  public:
 		Vector2<T> Origin;
 		Vector3<T> Direction;
 	};
-}
+}    // namespace CR::Math

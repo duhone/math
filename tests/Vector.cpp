@@ -1,13 +1,12 @@
 #include "catch.hpp"
 #include "math/Types.h"
-#include <unordered_set>
 #include <sstream>
+#include <unordered_set>
 
 using namespace CR::Math;
 using namespace std;
 
-TEST_CASE("basics", "[vector]")
-{
+TEST_CASE("basics", "[vector]") {
 	sint2 point{5, 2};
 	REQUIRE(point.X == 5);
 
@@ -20,18 +19,18 @@ TEST_CASE("basics", "[vector]")
 	stringstream stream;
 	stream << point;
 	REQUIRE(stream.str() == string{"{14, 10}"});
-	
+
 	unordered_set<sint2> testSet;
 	testSet.insert(point);
 	REQUIRE(testSet.find(point) != testSet.end());
-	
+
 	float3 vec{1, 2, 3};
 	REQUIRE(vec.Length() == Approx(3.741657f));
 
 	unordered_set<float3> testSet2;
 
 	double4 vecd{1, 2, 3, 4};
-	vecd = Pow(vecd, double4{1, 3, 2, 4});
+	vecd          = Pow(vecd, double4{1, 3, 2, 4});
 	auto expected = double4{1, 8, 9, 256};
 	REQUIRE(expected == vecd);
 }
