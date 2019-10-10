@@ -37,6 +37,7 @@ set(MATH_TEST_SRCS
 	
 	add_executable(math_tests $<TARGET_OBJECTS:core>
 						$<TARGET_OBJECTS:math>
+						$<TARGET_OBJECTS:fmt>
 						${MATH_TEST_SRCS})
 						
 	source_group("Source" FILES ${MATH_TEST_SRCS})
